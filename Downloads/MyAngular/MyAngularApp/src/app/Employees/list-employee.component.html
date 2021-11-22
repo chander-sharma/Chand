@@ -1,0 +1,71 @@
+<div class="panel panel-primary" *ngFor="let employee of employees">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{employee.FirstName}}</h3>
+  </div>
+  <div class="panel-body">
+
+    <div class="col-xs-10">
+
+      <div class="row vertical-align">
+
+        <div class="col-xs-4">
+          <img class="imageClass" [src]="employee.photoPath" />
+        </div>
+        <div class="col-xs-8">
+
+          <div class="row">
+            <div class="col-xs-6">
+              Surname
+            </div>
+            <div class="col-xs-6">
+              : {{employee.Surname}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              Gender
+            </div>
+            <div class="col-xs-6">
+              : {{employee.Gender}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              Email
+            </div>
+            <div class="col-xs-6">
+              : {{employee.Email}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              Mobile
+            </div>
+            <div class="col-xs-6">
+              : {{employee.Mobile}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              Date of Birth
+            </div>
+            <div class="col-xs-6">
+              : {{employee.DOB | date}}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6">
+              <button class="btn btn-sm btn-success">Edit</button>
+              <button class="btn btn-sm btn-secondary">Delete</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
