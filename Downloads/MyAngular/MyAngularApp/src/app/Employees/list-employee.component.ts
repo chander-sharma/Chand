@@ -1,3 +1,4 @@
+import { jsDocComment } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee.model';
 
@@ -7,13 +8,17 @@ import { Employee } from '../models/employee.model';
 })
 export class ListEmployeeComponent implements OnInit {
 
-  employees: Employee[];
+  employees: Employee [];
 
   constructor() {
     this.employees = [];
   }
   ngOnInit(): void {
 
+    const records = localStorage.getItem('employeelist');
+    if (records !== null) {
+      this.employees = JSON.parse(records);
+    }
   }
 
 }

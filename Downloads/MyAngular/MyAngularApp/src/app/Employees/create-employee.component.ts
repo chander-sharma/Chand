@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Employee } from '../models/employee.model';
 
@@ -7,16 +7,44 @@ import { Employee } from '../models/employee.model';
   templateUrl: './create-employee.component.html',
   styleUrls: ['./create-employee.component.css']
 })
-export class CreateEmployee {
+export class CreateEmployee implements OnInit {
 
-  emp: Employee = new Employee();
+  emp: Employee;
 
-  submit(newemployee: Employee): void {
+  constructor() {
+    this.emp = new Employee();
 
-    console.log(newemployee);
+  }
 
-    //localStorage.setItem('dataSource', this.login.length);
-    //console.log(localStorage.getItem('dataSource'));
+  ngOnInit(): void {
+
+  }
+
+  getNewEmpId() {
+    const oldrecords = localStorage.getItem('employeelist');
+    if (oldrecords !== null) {
+      const employeelist = JSON.parse(oldrecords);
+      return employeelist.length + 1;
+    }
+    else {
+      return 1;
+    }
+  }
+
+  submit() {
+    const latestId = this.getNewEmpId();
+    this.emp.empid = latestId;
+    const record = localStorage.getItem('employeelist');
+    if (record !== null) {
+      const employeelist = JSON.parse(record);
+      employeelist.push(this.emp);
+      localStorage.setItem('employeelist', JSON.stringify(employeelist));
+    }
+    else {
+      const empArr = [];
+      empArr.push(this.emp);
+      localStorage.setItem('employeelist', JSON.stringify(empArr));
+    }
   }
 
 }

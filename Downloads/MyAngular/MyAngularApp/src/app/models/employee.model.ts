@@ -1,4 +1,5 @@
 export class Employee {
+  empid: number;
   FirstName: string;
   Surname: string;
   Gender: string;

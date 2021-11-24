@@ -7,18 +7,20 @@ import { FormsModule } from '@angular/forms';
 import { CreateEmployee } from './Employees/create-employee.component';
 import { ListEmployeeComponent } from './Employees/list-employee.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UpdateEmployee } from './Employees/employee-update.component';
 
 const appRoutes: Routes = [
   { path: 'list', component: ListEmployeeComponent },
   { path: 'create', component: CreateEmployee },
+  { path: 'edit/:id', component: UpdateEmployee },
   { path: '', redirectTo: '/create', pathMatch: 'full' }
-  { path: 'edit', component: EmployeeUpdate },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateEmployee,
+    UpdateEmployee,
     ListEmployeeComponent
   ],
   imports: [
